@@ -20,7 +20,3 @@ enabled=PoolStringArray( "res://addons/tilemap_bleed_generator/plugin.cfg" )
 [physics]
 
 common/enable_pause_aware_picking=true
-
-[rendering]
-
-environment/default_environment="res://default_env.tres"
