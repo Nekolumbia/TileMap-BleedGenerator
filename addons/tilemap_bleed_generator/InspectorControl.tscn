@@ -1,0 +1,91 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://addons/tilemap_bleed_generator/InspectorControl.gd" type="Script" id=1]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.25098, 0.270588, 0.32549, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 1, 1, 1, 0.54902 )
+
+[node name="InspectorControl" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="PanelContainer" parent="VBoxContainer"]
+margin_right = 1024.0
+margin_bottom = 14.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="Label" type="Label" parent="VBoxContainer/Panel"]
+margin_right = 1024.0
+margin_bottom = 14.0
+text = "Tilemap Bleed-Generator"
+align = 1
+
+[node name="TileSize" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 18.0
+margin_right = 1024.0
+margin_bottom = 42.0
+
+[node name="Label" type="Label" parent="VBoxContainer/TileSize"]
+margin_top = 5.0
+margin_right = 510.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+text = "Tile Size:"
+
+[node name="TileSizeInt" type="SpinBox" parent="VBoxContainer/TileSize"]
+margin_left = 514.0
+margin_right = 1024.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+min_value = 1.0
+value = 32.0
+allow_greater = true
+
+[node name="BleedThickness" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 46.0
+margin_right = 1024.0
+margin_bottom = 70.0
+
+[node name="Label" type="Label" parent="VBoxContainer/BleedThickness"]
+margin_top = 5.0
+margin_right = 510.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+text = "Bleed Thickness (pixels)"
+
+[node name="BleedThicknessInt" type="SpinBox" parent="VBoxContainer/BleedThickness"]
+margin_left = 514.0
+margin_right = 1024.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+min_value = 1.0
+value = 1.0
+allow_greater = true
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+margin_top = 74.0
+margin_right = 1024.0
+margin_bottom = 90.0
+custom_styles/normal = SubResource( 2 )
+text = "Generate Bleed Image..."
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_Button_pressed"]
